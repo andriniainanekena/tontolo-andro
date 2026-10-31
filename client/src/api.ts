@@ -1,21 +1,32 @@
-let onUnauthorized: (() => void) | null = null
+let onUnauthorized: (() => void) | null = null;
 
 export function setUnauthorizedHandler(handler: (() => void) | null) {
-  onUnauthorized = handler
+  onUnauthorized = handler;
 }
 
-export async function api<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
-  const response = await fetch(`/api${path}`, {
+const API_URL = import.meta.env.VITE_API_URL || "";
+
+export async function api<T>(
+  path: string,
+  method = "GET",
+  body?: unknown,
+): Promise<T> {
+  const response = await fetch(`${API_URL}/api${path}`, {
     method,
-    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    headers: body ? { "Content-Type": "application/json" } : undefined,
+    credentials: "include",
     body: body ? JSON.stringify(body) : undefined,
-  })
+  });
 
   if (!response.ok) {
-    const data = await response.json().catch(() => ({}))
-    if (response.status === 401 && !path.startsWith('/auth/')) onUnauthorized?.()
-    throw new Error(data.error ?? 'Request failed')
+    const data = await response.json().catch(() => ({}));
+
+    if (response.status === 401 && !path.startsWith("/auth/")) {
+      onUnauthorized?.();
+    }
+
+    throw new Error(data.error ?? "Request failed");
   }
 
-  return response.json()
+  return response.json();
 }
