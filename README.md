@@ -2,8 +2,6 @@
 
 # Tontolo andro
 
-**Plan your day with routines, focus timers, and a simple progress dashboard.**
-
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-149ECA?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
@@ -37,7 +35,7 @@
 | Layer    | Technologies                          |
 | -------- | ------------------------------------- |
 | Frontend | React, TypeScript, Vite, Tailwind CSS |
-| Backend  | Node.js, [Express, TypeScript         |
+| Backend  | Node.js, Express, TypeScript         |
 | Database | PostgreSQL                            |
 | Mobile   | Android project files                 |
 
@@ -104,5 +102,3 @@ cd client
 npm install
 npm run dev
 ```
-
-Open **http://localhost:5173** in your browser.
